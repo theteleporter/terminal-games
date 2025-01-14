@@ -221,7 +221,7 @@ while [[ $ATTEMPTS_LEFT -gt 0 ]]; do
             [[ "$TIMER_ENABLED" == "y" ]] && echo -e "${CYAN}Time taken:${RESET} ${TIMER}s"
             save_user_data "$USER_NAME" "$TIMER" "$CORRECT_GUESSES" "$WRONG_GUESSES_COUNT" "$SCORE" "$NUMBER_OF_GUESSES"
             update_high_score "$USER_NAME" "$SCORE"
-            exit 0
+            break
         fi
     else
         # Incorrect guess
@@ -239,3 +239,24 @@ echo -e "${CYAN}Final Score:${RESET} $SCORE"
 [[ "$TIMER_ENABLED" == "y" ]] && echo -e "${CYAN}Time taken:${RESET} ${TIMER}s"
 save_user_data "$USER_NAME" "$TIMER" "$CORRECT_GUESSES" "$WRONG_GUESSES_COUNT" "$SCORE" "$NUMBER_OF_GUESSES"
 update_high_score "$USER_NAME" "$SCORE"
+
+# Restart game or exit
+echo "Would you like to play again?"
+echo "1. Yes, start a new game"
+echo "2. No, exit"
+read -p "Choose an option (1-2): " RESTART_CHOICE
+
+case $RESTART_CHOICE in
+    1)
+        echo -e "${CYAN}Starting a new game...${RESET}"
+        exec "$0" # Restart the script
+        ;;
+    2)
+        echo -e "${CYAN}Thanks for playing! Goodbye, $USER_NAME.${RESET}"
+        exit 0
+        ;;
+    *)
+        echo -e "${RED}Invalid option. Exiting the game.${RESET}"
+        exit 1
+        ;;
+esac

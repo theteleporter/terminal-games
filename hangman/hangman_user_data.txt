@@ -22,3 +22,21 @@ Correct words: 5
 Wrong words: 4
 Score: 30
 Guesses: 9
+Name: nuke
+Time taken: 53
+Correct words: 4
+Wrong words: 6
+Score: 10
+Guesses: 10
+Name: nuke
+Time taken: 34
+Correct words: 7
+Wrong words: 2
+Score: 60
+Guesses: 9
+Name: nuke
+Time taken: 37
+Correct words: 3
+Wrong words: 6
+Score: 0
+Guesses: 9
