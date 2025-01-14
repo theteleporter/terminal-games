@@ -1,14 +1,44 @@
-Name: nuke
 Time taken: 74
 Correct words: 6
 Wrong words: 6
 Score: 30
 Guesses: 12
 ---
-Name: The Teleporter
 Time taken: 
 Correct words: 2
 Wrong words: 6
 Score: -10
 Guesses: 8
+---
+Time taken: 48
+Correct words: 5
+Wrong words: 6
+Score: 20
+Guesses: 11
+---
+Time taken: 48
+Correct words: 3
+Wrong words: 6
+Score: 0
+Guesses: 9
+---
+Time taken: 46
+Correct words: 5
+Wrong words: 6
+Score: 20
+Guesses: 11
+---
+Name: nuke
+Time taken: 
+Correct words: 3
+Wrong words: 6
+Score: 0
+Guesses: 9
+---
+Name: The Teleporter
+Time taken: 29
+Correct words: 4
+Wrong words: 6
+Score: 10
+Guesses: 10
 ---

@@ -16,6 +16,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 CYAN='\033[0;36m'
+BLUE='\033[0;34m'
 RESET='\033[0m'
 
 # Function to draw the hangman
@@ -103,6 +104,30 @@ display_existing_players() {
     fi
 }
 
+# Function to display user data in a table
+display_user_data() {
+    local user_name=$1
+    if [[ -f "$USER_DATA_FILE" ]]; then
+        local user_data=$(sed -n "/^Name: $user_name$/,/^---$/p" "$USER_DATA_FILE")
+        if [[ -n "$user_data" ]]; then
+            echo -e "${BLUE}User Data for $user_name:${RESET}"
+            echo -e "${YELLOW}+---------------+------------------+${RESET}"
+            echo -e "${YELLOW}| ${CYAN}Statistic      ${YELLOW}| ${CYAN}Value            ${YELLOW}|${RESET}"
+            echo -e "${YELLOW}+---------------+------------------+${RESET}"
+            echo "$user_data" | while IFS=': ' read -r key value; do
+                if [[ "$key" != "Name" && "$key" != "---" ]]; then
+                    printf "${YELLOW}| ${CYAN}%-13s ${YELLOW}| ${GREEN}%-16s ${YELLOW}|${RESET}\n" "$key" "$value"
+                fi
+            done
+            echo -e "${YELLOW}+---------------+------------------+${RESET}"
+        else
+            echo "No data found for $user_name"
+        fi
+    else
+        echo "User data file not found."
+    fi
+}
+
 # Function to select or create a new player
 select_or_create_player() {
     echo "Do you want to continue with an existing player or create a new one?"
@@ -119,6 +144,7 @@ select_or_create_player() {
             USER_NAME=$(grep "Name:" "$USER_DATA_FILE" | cut -d ' ' -f 2- | sort -u | sed -n "${player_number}p")
             if [[ -n "$USER_NAME" ]]; then
                 echo "You have selected: $USER_NAME"
+                display_user_data "$USER_NAME"
             else
                 echo -e "${RED}Invalid selection. Please try again.${RESET}"
                 select_or_create_player
@@ -240,6 +266,7 @@ play_game() {
                 [[ "$TIMER_ENABLED" == "y" ]] && echo -e "${CYAN}Time taken:${RESET} ${TIMER}s"
                 save_user_data "$USER_NAME" "$TIMER" "$CORRECT_GUESSES" "$WRONG_GUESSES_COUNT" "$SCORE" "$NUMBER_OF_GUESSES"
                 update_high_score "$USER_NAME" "$SCORE"
+                display_user_data "$USER_NAME"
                 return 0
             fi
         else
@@ -258,6 +285,7 @@ play_game() {
     [[ "$TIMER_ENABLED" == "y" ]] && echo -e "${CYAN}Time taken:${RESET} ${TIMER}s"
     save_user_data "$USER_NAME" "$TIMER" "$CORRECT_GUESSES" "$WRONG_GUESSES_COUNT" "$SCORE" "$NUMBER_OF_GUESSES"
     update_high_score "$USER_NAME" "$SCORE"
+    display_user_data "$USER_NAME"
     return 1
 }
 
