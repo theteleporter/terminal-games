@@ -1,0 +1,24 @@
+Name: The Teleporter
+Time taken: 227
+Correct words: 3
+Wrong words: 6
+Score: 0
+Guesses: 9
+Name: The Teleporter
+Time taken: 103
+Correct words: 3
+Wrong words: 6
+Score: 0
+Guesses: 9
+Name: The Teleporter
+Time taken: 80
+Correct words: 2
+Wrong words: 6
+Score: -10
+Guesses: 8
+Name: The Teleporter
+Time taken: 37
+Correct words: 5
+Wrong words: 4
+Score: 30
+Guesses: 9

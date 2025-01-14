@@ -1,0 +1,15 @@
+Name: nuke
+Attempts: 10
+Score: 0
+Name: nuke
+Attempts: 10
+Score: 0
+Name: nuke
+Attempts: 5
+Score: 0
+Name: nuke
+Attempts: 2
+Score: 10
+Name: nuke
+Attempts: 5
+Score: 0
